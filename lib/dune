@@ -1,0 +1,22 @@
+; Need menhirLib for incremental API
+
+(library
+ (name microc)
+ (libraries menhirLib llvm llvm.analysis llvm.scalar_opts)
+ (preprocess
+  (pps ppx_deriving.show ppx_deriving.ord ppx_deriving.eq)))
+
+(ocamllex
+ (modules scanner))
+
+(menhir
+ (modules parser)
+ (flags --table --explain --dump --strict))
+
+(rule
+ (targets parser_messages.ml)
+ (deps parser.messages parser.mly)
+ (action
+  (with-stdout-to
+   %{targets}
+   (run menhir --compile-errors %{deps}))))
