@@ -1,6 +1,6 @@
 # MicroC Compiler
 
-MicroC is a subset of the language C with the following core functionalities:
+MicroC is a subset of the C language with the following core functionalities:
 
 * It supports integers (`int`), floats (`float`), characters (`char`), and booleans (`bool`) as scalar values, array, pointers, strings, and structs (`struct`) as compound data types;
 * No dynamic allocation of memory;
